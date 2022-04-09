@@ -1,0 +1,21 @@
+{
+	"$schema": "https://raw.githubusercontent.com/xen-42/outer-wilds-new-horizons/master/NewHorizons/schema.json",
+	"starSystem": "xen.ScaleShowcase",
+	"name" : "Sun Station Copy",
+	"Base" :
+	{
+		"sphereOfInfluence": 600,
+		"hasMapMarker": false
+	},
+	"Orbit": {
+		"isStatic": true,
+		"semiMajorAxis": 14500,
+		"primaryBody": "The Sun"
+	},
+	"Props" : 
+	{
+		"details": [
+			{ "path" : "SunStation_Body/Sector_SunStation" }
+		]
+	}
+}

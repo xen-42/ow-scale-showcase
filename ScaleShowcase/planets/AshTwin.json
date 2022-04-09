@@ -1,0 +1,23 @@
+{
+	"$schema": "https://raw.githubusercontent.com/xen-42/outer-wilds-new-horizons/master/NewHorizons/schema.json",
+	"starSystem": "xen.ScaleShowcase",
+	"name" : "Ash Twin Copy",
+	"Base" :
+	{
+		"sphereOfInfluence": 600,
+		"hasMapMarker": false
+	},
+	"Orbit": {
+		"isStatic": true,
+		"semiMajorAxis": 13650,
+		"primaryBody": "The Sun"
+	},
+	"Props" : 
+	{
+		"details": [
+			{ "path" : "TowerTwin_Body/Atmosphere_TowerTwin" },
+			{ "path" : "TowerTwin_Body/AmbientLight_TowerTwin" },
+			{ "path" : "TowerTwin_Body/Sector_TowerTwin" }
+		]
+	}
+}

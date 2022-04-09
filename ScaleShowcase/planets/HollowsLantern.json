@@ -1,0 +1,24 @@
+{
+	"$schema": "https://raw.githubusercontent.com/xen-42/outer-wilds-new-horizons/master/NewHorizons/schema.json",
+	"starSystem": "xen.ScaleShowcase",
+	"name" : "Hollow's Lantern Copy",
+	"Base" :
+	{
+		"sphereOfInfluence": 600,
+		"hasMapMarker": false
+	},
+	"Orbit": {
+		"isStatic": true,
+		"semiMajorAxis": 14850,
+		"primaryBody": "The Sun"
+	},
+	"Props" : 
+	{
+		"details": [
+			{ "path" : "VolcanicMoon_Body/Atmosphere_VM" },
+			{ "path" : "VolcanicMoon_Body/AmbientLight_VM" },
+			{ "path" : "VolcanicMoon_Body/Sector_VM", "removeChildren" : ["Effects_VM"] },
+			{ "path" : "VolcanicMoon_Body/MoltenCore_VM" }
+		]
+	}
+}

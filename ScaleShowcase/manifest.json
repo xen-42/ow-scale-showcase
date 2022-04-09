@@ -1,0 +1,9 @@
+{
+  "filename": "ScaleShowcase.dll",
+  "author": "xen",
+  "name": "Scale Showcase",
+  "uniqueName": "xen.ScaleShowcase",
+  "version": "1.0.0",
+  "owmlVersion": "2.3.2",
+  "dependencies": [ "xen.NewHorizons" ]
+}

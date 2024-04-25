@@ -158,6 +158,7 @@ namespace ScaleShowcase
             eyeSector.transform.parent = eye.transform;
             eyeSector.transform.localPosition = Vector3.zero;
             eyeSector.SetActive(true);
+            eyeSector.transform.Find("Effects_EYE_Symbol_Surface").gameObject.SetActive(false);
             foreach (var cull in eyeSector.GetComponentsInChildren<SectorCullGroup>(true)) GameObject.Destroy(cull);
 
             var eyeLighting = GameObject.Instantiate(EyePrefab.transform.Find("Sector_EyeOfTheUniverse/SixthPlanet_Root/Lighting_SixthPlanet").gameObject);

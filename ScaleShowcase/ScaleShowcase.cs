@@ -10,6 +10,7 @@ namespace ScaleShowcase
     {
         public static ScaleShowcase Instance;
         public static GameObject EyePrefab = null;
+        public static GameObject VesselPrefab = null;
         public static bool IsInitialized = false;
 
         public static INewHorizons NewHorizonsAPI;
@@ -77,6 +78,9 @@ namespace ScaleShowcase
                 EyePrefab = GameObject.Instantiate(GameObject.Find("EyeOfTheUniverse_Body"));
                 EyePrefab.SetActive(false);
                 DontDestroyOnLoad(EyePrefab);
+                VesselPrefab = GameObject.Instantiate(GameObject.Find("Vessel_Body"));
+                VesselPrefab.SetActive(false);
+                DontDestroyOnLoad(VesselPrefab);
                 LoadManager.LoadSceneAsync(OWScene.TitleScreen, true, LoadManager.FadeType.ToBlack, 0.1f, true);
             }
 
@@ -130,6 +134,13 @@ namespace ScaleShowcase
             vessel = NewHorizonsAPI.GetPlanet("Vessel Copy");
             whiteHole = NewHorizonsAPI.GetPlanet("White Hole Copy");
             whiteHoleStation = NewHorizonsAPI.GetPlanet("White Hole Station Copy");
+
+            // Add in the vessel
+            var vesselSector = GameObject.Instantiate(VesselPrefab.transform.Find("Sector_VesselBridge").gameObject);
+            vesselSector.transform.parent = vessel.transform;
+            vesselSector.transform.localPosition = new Vector3(0, 0, 206.3936f); // Centered on the orb
+            vesselSector.SetActive(true);
+            vesselSector.transform.Find("Interactibles_VesselBridge/WarpController/Structure_NOM_Door_Silver_Round (1)").gameObject.SetActive(false);
 
             // Add in the eye
             var eyeSector = GameObject.Instantiate(EyePrefab.transform.Find("Sector_EyeOfTheUniverse/SixthPlanet_Root/Sector_EyeSurface").gameObject);

@@ -1,0 +1,59 @@
+{
+	"$schema": "https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/body_schema.json",
+	"starSystem": "xen.ScaleShowcase",
+	"name": "Gravity Cannon Copy",
+	"Base": {
+		"soiOverride": 600,
+		"hasMapMarker": false
+	},
+	"Orbit": {
+		"isStatic": true,
+		"semiMajorAxis": 16300,
+		"primaryBody": "The Sun"
+	},
+	"Props": {
+		"gravityCannons": [
+			{
+				"shuttleID": "ScaleSolarSystem",
+				"detailed": true,
+				"position": {
+					"x": 0,
+					"y": 0,
+					"z": -45.5
+				},
+				"rotation": {
+					"x": 90,
+					"y": 0,
+					"z": 0
+				},
+				"rename": "LatticeCageGravityCannon",
+				"controls": {
+					"position": {
+						"x": 0,
+						"y": -20,
+						"z": -27.5
+					},
+					"rotation": {
+						"x": 90,
+						"y": 0,
+						"z": 0
+					},
+					"rename": "Controls"
+				},
+				"computer": {
+					"position": {
+						"x": 2,
+						"y": -25,
+						"z": -27.5
+					},
+					"rotation": {
+						"x": 90,
+						"y": 0,
+						"z": 0
+					},
+					"rename": "Computer"
+				}
+			}
+		]
+	}
+}

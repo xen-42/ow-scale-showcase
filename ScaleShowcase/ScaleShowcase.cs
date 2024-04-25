@@ -28,6 +28,7 @@ namespace ScaleShowcase
         public static GameObject emberTwin;
         public static GameObject eye;
         public static GameObject giantsDeep;
+        public static GameObject gravityCannon;
         public static GameObject hollowsLantern;
         public static GameObject iceShuttle;
         public static GameObject ringedPlanet;
@@ -122,6 +123,7 @@ namespace ScaleShowcase
             emberTwin = NewHorizonsAPI.GetPlanet("Ember Twin Copy");
             eye = NewHorizonsAPI.GetPlanet("Eye Copy");
             giantsDeep = NewHorizonsAPI.GetPlanet("Giant's Deep Copy");
+            gravityCannon = NewHorizonsAPI.GetPlanet("Gravity Cannon Copy");
             hollowsLantern = NewHorizonsAPI.GetPlanet("Hollow's Lantern Copy");
             iceShuttle = NewHorizonsAPI.GetPlanet("Ice Shuttle Copy");
             ringedPlanet = NewHorizonsAPI.GetPlanet("Ringed Planet Copy");

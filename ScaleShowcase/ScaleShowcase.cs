@@ -1,4 +1,5 @@
-﻿using OWML.Common;
+using NewHorizons.Utility;
+using OWML.Common;
 using OWML.ModHelper;
 using System;
 using UnityEngine;
@@ -91,7 +92,8 @@ namespace ScaleShowcase
                 Log("Entering the scale showcase system");
 
                 // Get the Stranger to work
-                var streamingGroup = GameObject.Find("RingWorld_Body/StreamingGroup_RW").GetComponent<StreamingGroup>();
+                var streamingGroup = SearchUtilities.Find("RingWorld_Body/StreamingGroup_RW").GetComponent<StreamingGroup>();
+                streamingGroup.Awake();
                 streamingGroup.LoadGeneralAssets();
                 streamingGroup.LoadRequiredAssets();
                 streamingGroup.LoadRequiredColliders();
@@ -177,6 +179,7 @@ namespace ScaleShowcase
             jammerGeo.transform.localPosition = Vector3.zero;
             jammerGeo.SetActive(true);
 
+            stranger.transform.Find("Sector").GetComponent<SphereShape>().radius = 0;
             foreach (var cloakProxy in stranger.GetComponentsInChildren<CloakingFieldProxy>())
             {
                 cloakProxy.OnPlayerEnterCloakingField();

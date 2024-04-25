@@ -22,6 +22,7 @@ namespace ScaleShowcase
         public static GameObject anglerfish;
         public static GameObject ashTwin;
         public static GameObject attlerock;
+        public static GameObject backerSatellite;
         public static GameObject brittleHollow;
         public static GameObject darkBramble;
         public static GameObject emberTwin;
@@ -30,10 +31,12 @@ namespace ScaleShowcase
         public static GameObject hollowsLantern;
         public static GameObject iceShuttle;
         public static GameObject ringedPlanet;
+        public static GameObject mapSatellite;
         public static GameObject nomaiProbe;
         public static GameObject orbitalProbeCannon;
         public static GameObject quantumMoon;
         public static GameObject signalJammer;
+        public static GameObject skyShutterSatellite;
         public static GameObject stranger;
         public static GameObject sun;
         public static GameObject sunStation;
@@ -112,6 +115,7 @@ namespace ScaleShowcase
             anglerfish = NewHorizonsAPI.GetPlanet("Anglerfish Copy");
             ashTwin = NewHorizonsAPI.GetPlanet("Ash Twin Copy");
             attlerock = NewHorizonsAPI.GetPlanet("Attlerock Copy");
+            backerSatellite = NewHorizonsAPI.GetPlanet("Backer Satellite Copy");
             brittleHollow = NewHorizonsAPI.GetPlanet("Brittle Hollow Copy");
             darkBramble = NewHorizonsAPI.GetPlanet("Dark Bramble Copy");
             emberTwin = NewHorizonsAPI.GetPlanet("Ember Twin Copy");
@@ -120,10 +124,12 @@ namespace ScaleShowcase
             hollowsLantern = NewHorizonsAPI.GetPlanet("Hollow's Lantern Copy");
             iceShuttle = NewHorizonsAPI.GetPlanet("Ice Shuttle Copy");
             ringedPlanet = NewHorizonsAPI.GetPlanet("Ringed Planet Copy");
+            mapSatellite = NewHorizonsAPI.GetPlanet("Map Satellite Copy");
             nomaiProbe = NewHorizonsAPI.GetPlanet("Nomai Probe Copy");
             orbitalProbeCannon = NewHorizonsAPI.GetPlanet("Orbital Probe Cannon Copy");
             quantumMoon = NewHorizonsAPI.GetPlanet("Quantum Moon Copy");
             signalJammer = NewHorizonsAPI.GetPlanet("Signal Jammer Copy");
+            skyShutterSatellite = NewHorizonsAPI.GetPlanet("Sky Shutter Satellite Copy");
             stranger = NewHorizonsAPI.GetPlanet("Stranger Copy");
             sun = NewHorizonsAPI.GetPlanet("The Sun");
             sunStation = NewHorizonsAPI.GetPlanet("Sun Station Copy");

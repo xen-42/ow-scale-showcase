@@ -1,10 +1,9 @@
 {
 	"$schema": "https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/body_schema.json",
 	"starSystem": "xen.ScaleShowcase",
-	"name" : "Anglerfish Copy",
-	"Base" :
-	{
-		"sphereOfInfluence": 600,
+	"name": "Anglerfish Copy",
+	"Base": {
+		"soiOverride": 600,
 		"hasMapMarker": false
 	},
 	"Orbit": {
@@ -12,10 +11,12 @@
 		"semiMajorAxis": 15500,
 		"primaryBody": "The Sun"
 	},
-	"Props" : 
-	{
+	"Props": {
 		"details": [
-			{ "path" : "Anglerfish_Body/Beast_Anglerfish" }
+			{
+				"path": "Anglerfish_Body/Beast_Anglerfish",
+				"keepLoaded": true
+			}
 		]
 	}
 }

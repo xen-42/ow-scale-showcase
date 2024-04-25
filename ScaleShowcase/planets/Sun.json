@@ -1,23 +1,42 @@
 {
 	"$schema": "https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/body_schema.json",
 	"starSystem": "xen.ScaleShowcase",
-	"name" : "The Sun",
-	"Base" :
-	{
+	"name": "The Sun",
+	"Base": {
 		"centerOfSolarSystem": true,
-		"sphereOfInfluence": 4000,
+		"soiOverride": 4000,
 		"hasMapMarker": false
 	},
-	"Props" : 
-	{
+	"Props": {
 		"details": [
-			{ "path" : "Sun_Body/AmbientLight_SUN" },
-			{ "path" : "Sun_Body/Atmosphere_SUN" },
-			{ "path" : "Sun_Body/Sector_SUN" }
+			{
+				"path": "Sun_Body/AmbientLight_SUN",
+				"keepLoaded": true
+			},
+			{
+				"path": "Sun_Body/Atmosphere_SUN",
+				"keepLoaded": true
+			},
+			{
+				"path": "Sun_Body/Sector_SUN",
+				"keepLoaded": true
+			}
 		]
 	},
 	"Spawn": {
-		"playerSpawnPoint": {"x":17150, "y":0, "z":0},
-		"shipSpawnPoint": {"x":17150, "y":0, "z":0}
+		"playerSpawn": {
+			"position": {
+				"x": 17150,
+				"y": 0,
+				"z": 0
+			}
+		},
+		"shipSpawn": {
+			"position": {
+				"x": 17150,
+				"y": 0,
+				"z": 0
+			}
+		}
 	}
 }

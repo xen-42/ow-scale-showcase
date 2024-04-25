@@ -1,10 +1,9 @@
 {
 	"$schema": "https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/body_schema.json",
 	"starSystem": "xen.ScaleShowcase",
-	"name" : "Giant's Deep Copy",
-	"Base" :
-	{
-		"sphereOfInfluence": 600,
+	"name": "Giant's Deep Copy",
+	"Base": {
+		"soiOverride": 600,
 		"hasMapMarker": false
 	},
 	"Orbit": {
@@ -12,12 +11,19 @@
 		"semiMajorAxis": 3500,
 		"primaryBody": "The Sun"
 	},
-	"Props" : 
-	{
+	"Props": {
 		"details": [
-			{ "path" : "GiantsDeep_Body/Atmosphere_GD" },
-			{ "path" : "GiantsDeep_Body/AmbientLight_GD" },
-			{ "path" : "GiantsDeep_Body/Sector_GD" }
+			{
+				"path": "GiantsDeep_Body/Atmosphere_GD",
+				"keepLoaded": true
+			},
+			{
+				"path": "GiantsDeep_Body/AmbientLight_GD",
+				"keepLoaded": true
+			},
+			{
+				"path": "GiantsDeep_Body/Sector_GD"
+			}
 		]
 	}
 }

@@ -1,10 +1,9 @@
 {
 	"$schema": "https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/body_schema.json",
 	"starSystem": "xen.ScaleShowcase",
-	"name" : "Signal Jammer Copy",
-	"Base" :
-	{
-		"sphereOfInfluence": 600,
+	"name": "Signal Jammer Copy",
+	"Base": {
+		"soiOverride": 600,
 		"hasMapMarker": false
 	},
 	"Orbit": {

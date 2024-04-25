@@ -49,7 +49,7 @@ namespace ScaleShowcase
             Log($"{nameof(ScaleShowcase)} is installed");
 
             // Load NH stuff
-            NewHorizonsAPI = ModHelper.Interaction.GetModApi<INewHorizons>("xen.NewHorizons");
+            NewHorizonsAPI = ModHelper.Interaction.TryGetModApi<INewHorizons>("xen.NewHorizons");
             NewHorizonsAPI.LoadConfigs(this);
             NewHorizonsAPI.GetStarSystemLoadedEvent().AddListener(OnLoadStarSystem);
 
@@ -64,13 +64,13 @@ namespace ScaleShowcase
         {
             Log($"Loading into {loadScene}");
 
-            if(loadScene == OWScene.TitleScreen && !IsInitialized)
+            if (loadScene == OWScene.TitleScreen && !IsInitialized)
             {
                 Log("Going to grab the eye.");
                 LoadManager.LoadSceneAsync(OWScene.EyeOfTheUniverse, true, LoadManager.FadeType.ToBlack, 0.1f, true);
             }
 
-            if(loadScene == OWScene.EyeOfTheUniverse && !IsInitialized)
+            if (loadScene == OWScene.EyeOfTheUniverse && !IsInitialized)
             {
                 Log("Grabbing the eye");
                 IsInitialized = true;
@@ -80,7 +80,7 @@ namespace ScaleShowcase
                 LoadManager.LoadSceneAsync(OWScene.TitleScreen, true, LoadManager.FadeType.ToBlack, 0.1f, true);
             }
 
-            if(loadScene == OWScene.SolarSystem && NewHorizonsAPI.GetCurrentStarSystem() == ScaleSystemName)
+            if (loadScene == OWScene.SolarSystem && NewHorizonsAPI.GetCurrentStarSystem() == ScaleSystemName)
             {
                 Log("Entering the scale showcase system");
 
@@ -100,7 +100,7 @@ namespace ScaleShowcase
 
             Log("Scale showcase system should be done loading");
 
-            ModHelper.Events.Unity.FireInNUpdates(OnNHComplete, 10); 
+            ModHelper.Events.Unity.FireInNUpdates(OnNHComplete, 10);
         }
 
         public static void OnNHComplete()
@@ -136,12 +136,29 @@ namespace ScaleShowcase
             eyeSector.transform.parent = eye.transform;
             eyeSector.transform.localPosition = Vector3.zero;
             eyeSector.SetActive(true);
+            foreach (var cull in eyeSector.GetComponentsInChildren<SectorCullGroup>(true)) GameObject.Destroy(cull);
 
-            var eyeSurface = GameObject.Instantiate(EyePrefab.transform.Find("Sector_EyeOfTheUniverse/SixthPlanet_Root/Proxy_SixthPlanet").gameObject);
-            eyeSurface.transform.parent = eye.transform;
-            eyeSurface.transform.localPosition = Vector3.zero;
-            eyeSurface.SetActive(true);
-            eyeSurface.transform.Find("Effects_EYE_Symbol").gameObject.SetActive(false);
+            var eyeLighting = GameObject.Instantiate(EyePrefab.transform.Find("Sector_EyeOfTheUniverse/SixthPlanet_Root/Lighting_SixthPlanet").gameObject);
+            eyeLighting.transform.parent = eye.transform;
+            eyeLighting.transform.localPosition = Vector3.zero;
+            eyeLighting.SetActive(true);
+            eyeLighting.transform.Find("Light_ChuteEntrance").gameObject.SetActive(false);
+            foreach (var light in eyeLighting.GetComponentsInChildren<HeatLightningController>(true)) light.gameObject.SetActive(false);
+
+            var eyeAmbient = GameObject.Instantiate(EyePrefab.transform.Find("Sector_EyeOfTheUniverse/AmbientLight_EYE").gameObject);
+            eyeAmbient.transform.parent = eye.transform;
+            eyeAmbient.transform.localPosition = Vector3.zero;
+            eyeAmbient.SetActive(true);
+
+            var qmAtmosphere = GameObject.Instantiate(EyePrefab.transform.Find("Sector_EyeOfTheUniverse/SixthPlanet_Root/QuantumMoonProxy_Pivot/QuantumMoonProxy_Root/MoonState_Root/AtmoSphere").gameObject);
+            qmAtmosphere.transform.parent = quantumMoon.transform;
+            qmAtmosphere.transform.localPosition = Vector3.zero;
+            qmAtmosphere.SetActive(true);
+
+            var qmAmbientLight = GameObject.Instantiate(EyePrefab.transform.Find("Sector_EyeOfTheUniverse/SixthPlanet_Root/QuantumMoonProxy_Pivot/QuantumMoonProxy_Root/MoonState_Root/AmbientLight_QM").gameObject);
+            qmAmbientLight.transform.parent = quantumMoon.transform;
+            qmAmbientLight.transform.localPosition = Vector3.zero;
+            qmAmbientLight.SetActive(true);
 
             var jammerGeo = GameObject.Instantiate(EyePrefab.transform.Find("Sector_EyeOfTheUniverse/SixthPlanet_Root/SignalJammer_Pivot/SignalJammer_Root").gameObject);
             jammerGeo.transform.parent = signalJammer.transform;
@@ -154,16 +171,19 @@ namespace ScaleShowcase
             }
 
             // Ringed planet 
-            foreach (var renderer in ringedPlanet.transform.Find("Sector/Prefab_IP_VisiblePlanet(Clone)/VisiblePlanet_Pivot").GetComponentsInChildren<MeshRenderer>())
+            foreach (var renderer in ringedPlanet.transform.Find("Sector/Prefab_IP_VisiblePlanet/VisiblePlanet_Pivot/Rings_IP_VisiblePlanet").GetComponentsInChildren<MeshRenderer>())
             {
                 renderer.enabled = true;
             }
+            GameObject.DestroyImmediate(ringedPlanet.transform.Find("Sector/Prefab_IP_VisiblePlanet/VisiblePlanet_Pivot/Rings_IP_VisiblePlanet/OtherSide").GetComponent<RotateTransform>());
+            ringedPlanet.transform.Find("Sector/Prefab_IP_VisiblePlanet/VisiblePlanet_Pivot/Rings_IP_VisiblePlanet/OtherSide").transform.localRotation = Quaternion.Euler(180, 0, 0);
 
             // Try fixing freecam while we're at it
-            if(Instance.ModHelper.Interaction.ModExists("misternebula.FreeCam"))
+            if (Instance.ModHelper.Interaction.ModExists("misternebula.FreeCam"))
             {
                 Log("Freecam is installed");
-                Instance.ModHelper.Events.Unity.RunWhen(() => GameObject.Find("FREECAM") != null, () => {
+                Instance.ModHelper.Events.Unity.RunWhen(() => GameObject.Find("FREECAM") != null, () =>
+                {
                     var freecam = GameObject.Find("FREECAM");
                     freecam.transform.parent = Locator.GetPlayerTransform();
                     freeCamLight = freecam.AddComponent<Light>();
@@ -182,13 +202,13 @@ namespace ScaleShowcase
 
         void Update()
         {
-            if(freeCamLight != null && Keyboard.current[Key.F].wasPressedThisFrame)
+            if (freeCamLight != null && Keyboard.current[Key.F].wasPressedThisFrame)
             {
                 freeCamLight.enabled = !freeCamLight.enabled;
             }
 
             // Fix some rotations but CR doesn't want us to
-            if(darkBramble.transform.rotation != Quaternion.identity)
+            if (darkBramble != null && darkBramble.transform.rotation != Quaternion.identity)
             {
                 darkBramble.transform.rotation = Quaternion.identity;
                 vessel.transform.rotation = Quaternion.identity;

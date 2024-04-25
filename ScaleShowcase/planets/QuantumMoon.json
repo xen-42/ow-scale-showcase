@@ -1,10 +1,9 @@
 {
 	"$schema": "https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/body_schema.json",
 	"starSystem": "xen.ScaleShowcase",
-	"name" : "Quantum Moon Copy",
-	"Base" :
-	{
-		"sphereOfInfluence": 600,
+	"name": "Quantum Moon Copy",
+	"Base": {
+		"soiOverride": 600,
 		"hasMapMarker": false
 	},
 	"Orbit": {
@@ -12,10 +11,13 @@
 		"semiMajorAxis": 15200,
 		"primaryBody": "The Sun"
 	},
-	"Props" : 
-	{
+	"Props": {
 		"details": [
-			{ "path" : "CloudsTopLayer_QM", "scale": 110 }
+			{
+				"path": "CloudsTopLayer_QM",
+				"keepLoaded": true,
+				"scale": 110
+			}
 		]
 	}
 }

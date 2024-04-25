@@ -1,10 +1,9 @@
 {
 	"$schema": "https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/body_schema.json",
 	"starSystem": "xen.ScaleShowcase",
-	"name" : "Shuttle Copy",
-	"Base" :
-	{
-		"sphereOfInfluence": 600,
+	"name": "Shuttle Copy",
+	"Base": {
+		"soiOverride": 600,
 		"hasMapMarker": false
 	},
 	"Orbit": {
@@ -12,10 +11,13 @@
 		"semiMajorAxis": 17050,
 		"primaryBody": "The Sun"
 	},
-	"Props" : 
-	{
+	"Props": {
 		"details": [
-			{ "path" : "Comet_Body/Prefab_NOM_Shuttle" }
+			{
+				"path": "Comet_Body/Prefab_NOM_Shuttle",
+				"position": { "y": -15 },
+				"keepLoaded": true
+			}
 		]
 	}
 }

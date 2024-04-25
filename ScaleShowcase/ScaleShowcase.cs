@@ -1,3 +1,4 @@
+﻿using HarmonyLib;
 using NewHorizons.Utility;
 using OWML.Common;
 using OWML.ModHelper;
@@ -7,6 +8,7 @@ using UnityEngine.InputSystem;
 
 namespace ScaleShowcase
 {
+    [HarmonyPatch]
     public class ScaleShowcase : ModBehaviour
     {
         public static ScaleShowcase Instance;
@@ -49,11 +51,14 @@ namespace ScaleShowcase
         public static GameObject whiteHole;
         public static GameObject whiteHoleStation;
 
+        public static bool _ignore;
 
         private void Start()
         {
             Instance = this;
             Log($"{nameof(ScaleShowcase)} is installed");
+
+            new Harmony(ScaleSystemName).PatchAll();
 
             // Load NH stuff
             NewHorizonsAPI = ModHelper.Interaction.TryGetModApi<INewHorizons>("xen.NewHorizons");
@@ -74,6 +79,7 @@ namespace ScaleShowcase
             if (loadScene == OWScene.TitleScreen && !IsInitialized)
             {
                 Log("Going to grab the eye.");
+                _ignore = true;
                 LoadManager.LoadSceneAsync(OWScene.EyeOfTheUniverse, true, LoadManager.FadeType.ToBlack, 0.1f, true);
             }
 
@@ -236,6 +242,17 @@ namespace ScaleShowcase
                 shuttle.transform.rotation = Quaternion.identity;
                 signalJammer.transform.rotation = Quaternion.Euler(0, 45, 0);
             }
+        }
+
+
+        [HarmonyPatch(typeof(NewHorizons.Main), "OnSceneLoaded")]
+        [HarmonyPrefix]
+        public static bool IgnorePatch()
+        {
+            Log("Ignoring NH scene load because we moved to eye to grab prefabs");
+            var ignore = _ignore;
+            _ignore = false;
+            return !ignore;
         }
     }
 }

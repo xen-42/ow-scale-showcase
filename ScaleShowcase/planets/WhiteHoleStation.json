@@ -15,12 +15,6 @@
 		"details": [
 			{
 				"path": "WhiteholeStation_Body/Sector_WhiteholeStation"
-			},
-			{
-				"path": "WhiteholeStationSuperstructure_Body/Proxy_WhiteholeStationSuperstructure"
-			},
-			{
-				"path": "WhiteholeStationSuperstructure_Body/Geometry_WhiteholeStationSuperstructure"
 			}
 		]
 	}

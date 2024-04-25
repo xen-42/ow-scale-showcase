@@ -32,6 +32,7 @@ namespace ScaleShowcase
         public static GameObject iceShuttle;
         public static GameObject ringedPlanet;
         public static GameObject mapSatellite;
+        public static GameObject miningRig;
         public static GameObject nomaiProbe;
         public static GameObject orbitalProbeCannon;
         public static GameObject quantumMoon;
@@ -125,6 +126,7 @@ namespace ScaleShowcase
             iceShuttle = NewHorizonsAPI.GetPlanet("Ice Shuttle Copy");
             ringedPlanet = NewHorizonsAPI.GetPlanet("Ringed Planet Copy");
             mapSatellite = NewHorizonsAPI.GetPlanet("Map Satellite Copy");
+            miningRig = NewHorizonsAPI.GetPlanet("Mining Rig Copy");
             nomaiProbe = NewHorizonsAPI.GetPlanet("Nomai Probe Copy");
             orbitalProbeCannon = NewHorizonsAPI.GetPlanet("Orbital Probe Cannon Copy");
             quantumMoon = NewHorizonsAPI.GetPlanet("Quantum Moon Copy");

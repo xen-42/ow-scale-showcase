@@ -22,6 +22,14 @@
 			},
 			{
 				"path": "RingWorld_Body/Sector_RingInterior"
+			},
+			{
+				"path": "StaticRing_Body/Proxy_StaticRing",
+				"keepLoaded": true
+			},
+			{
+				"path": "StaticRing_Body/Geometry_StaticRing",
+				"keepLoaded": true
 			}
 		]
 	}

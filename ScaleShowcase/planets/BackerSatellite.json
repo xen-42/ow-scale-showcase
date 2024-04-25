@@ -19,6 +19,7 @@
 			},
 			{
 				"path": "BackerSatellite_Body/Sector_BackerSatellite/Video_BackerSatellite",
+				"removeChildren": [ "VideoPlayer_Fig_Backer/VideoPlayer_AudioSource" ],
 				"keepLoaded": true
 			}
 		]

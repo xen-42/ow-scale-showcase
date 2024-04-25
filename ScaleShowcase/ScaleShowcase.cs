@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using NewHorizons.Handlers;
 using NewHorizons.Utility;
 using OWML.Common;
 using OWML.ModHelper;
@@ -87,6 +88,7 @@ namespace ScaleShowcase
             {
                 Log("Grabbing the eye");
                 IsInitialized = true;
+                EyeSceneHandler.OnSceneLoad();
                 EyePrefab = GameObject.Instantiate(GameObject.Find("EyeOfTheUniverse_Body"));
                 EyePrefab.SetActive(false);
                 DontDestroyOnLoad(EyePrefab);

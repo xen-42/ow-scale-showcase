@@ -24,6 +24,7 @@ namespace ScaleShowcase
 
         // Planets
         public static GameObject anglerfish;
+        public static GameObject anglerfishEggs;
         public static GameObject ashTwin;
         public static GameObject attlerock;
         public static GameObject backerSatellite;
@@ -125,6 +126,7 @@ namespace ScaleShowcase
 
             // Now we get all the planets
             anglerfish = NewHorizonsAPI.GetPlanet("Anglerfish Copy");
+            anglerfishEggs = NewHorizonsAPI.GetPlanet("Anglerfish Eggs Copy");
             ashTwin = NewHorizonsAPI.GetPlanet("Ash Twin Copy");
             attlerock = NewHorizonsAPI.GetPlanet("Attlerock Copy");
             backerSatellite = NewHorizonsAPI.GetPlanet("Backer Satellite Copy");
@@ -201,6 +203,13 @@ namespace ScaleShowcase
             }
             GameObject.DestroyImmediate(ringedPlanet.transform.Find("Sector/Prefab_IP_VisiblePlanet/VisiblePlanet_Pivot/Rings_IP_VisiblePlanet/OtherSide").GetComponent<RotateTransform>());
             ringedPlanet.transform.Find("Sector/Prefab_IP_VisiblePlanet/VisiblePlanet_Pivot/Rings_IP_VisiblePlanet/OtherSide").transform.localRotation = Quaternion.Euler(180, 0, 0);
+
+            var eggs = anglerfishEggs.transform.Find("Sector/quadSphere1");
+            var sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            sphere.transform.localScale = Vector3.one * 11;
+            sphere.transform.SetParent(anglerfishEggs.transform.Find("Sector"), false);
+            sphere.GetComponent<MeshRenderer>().sharedMaterial = eggs.GetComponent<MeshRenderer>().sharedMaterial;
+            eggs.gameObject.SetActive(false);
 
             // Try fixing freecam while we're at it
             if (Instance.ModHelper.Interaction.ModExists("misternebula.FreeCam"))

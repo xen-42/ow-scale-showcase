@@ -1,0 +1,22 @@
+{
+	"$schema": "https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/body_schema.json",
+	"starSystem": "xen.ScaleShowcase",
+	"name": "Anglerfish Eggs Copy",
+	"Base": {
+		"soiOverride": 600,
+		"hasMapMarker": false
+	},
+	"Orbit": {
+		"isStatic": true,
+		"semiMajorAxis": 17175,
+		"primaryBody": "The Sun"
+	},
+	"Props": {
+		"details": [
+			{
+				"path": "DB_AnglerNestDimension_Body/Sector_AnglerNestDimension/Geometry_AnglerNestDimension/OtherComponentsGroup/FishEggs/quadSphere1",
+				"keepLoaded": true
+			}
+		]
+	}
+}

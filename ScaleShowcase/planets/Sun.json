@@ -26,14 +26,14 @@
 	"Spawn": {
 		"playerSpawn": {
 			"position": {
-				"x": 17150,
+				"x": 17540,
 				"y": 0,
 				"z": 0
 			}
 		},
 		"shipSpawn": {
 			"position": {
-				"x": 17150,
+				"x": 17540,
 				"y": 0,
 				"z": 0
 			}

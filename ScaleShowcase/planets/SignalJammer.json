@@ -8,7 +8,7 @@
 	},
 	"Orbit": {
 		"isStatic": true,
-		"semiMajorAxis": 16100,
+		"semiMajorAxis": 16500,
 		"primaryBody": "The Sun"
 	}
 }

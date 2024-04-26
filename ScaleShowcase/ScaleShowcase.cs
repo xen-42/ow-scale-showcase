@@ -36,6 +36,7 @@ namespace ScaleShowcase
         public static GameObject gravityCannon;
         public static GameObject hollowsLantern;
         public static GameObject iceShuttle;
+        public static GameObject interloper;
         public static GameObject ringedPlanet;
         public static GameObject mapSatellite;
         public static GameObject miningRig;
@@ -138,6 +139,7 @@ namespace ScaleShowcase
             gravityCannon = NewHorizonsAPI.GetPlanet("Gravity Cannon Copy");
             hollowsLantern = NewHorizonsAPI.GetPlanet("Hollow's Lantern Copy");
             iceShuttle = NewHorizonsAPI.GetPlanet("Ice Shuttle Copy");
+            interloper = NewHorizonsAPI.GetPlanet("Interloper Copy");
             ringedPlanet = NewHorizonsAPI.GetPlanet("Ringed Planet Copy");
             mapSatellite = NewHorizonsAPI.GetPlanet("Map Satellite Copy");
             miningRig = NewHorizonsAPI.GetPlanet("Mining Rig Copy");

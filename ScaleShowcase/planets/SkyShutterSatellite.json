@@ -1,24 +1,29 @@
 {
 	"$schema": "https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/body_schema.json",
 	"starSystem": "xen.ScaleShowcase",
-	"name": "Attlerock Copy",
+	"name": "Sky Shutter Satellite Copy",
 	"Base": {
-		"soiOverride": 600,
+		"soiOverride": 50,
 		"hasMapMarker": false
 	},
 	"Orbit": {
 		"isStatic": true,
-		"semiMajorAxis": 16200,
+		"semiMajorAxis": 17650,
 		"primaryBody": "The Sun"
 	},
 	"Props": {
 		"details": [
 			{
-				"path": "Moon_Body/AmbientLight_THM",
+				"path": "Satellite_Body/Prop_HEA_OldSchoolProbe",
 				"keepLoaded": true
 			},
 			{
-				"path": "Moon_Body/Sector_THM"
+				"path": "Satellite_Body/Collider",
+				"keepLoaded": true
+			},
+			{
+				"path": "Satellite_Body/CameraPivot",
+				"keepLoaded": true
 			}
 		]
 	}

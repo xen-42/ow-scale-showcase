@@ -1,10 +1,9 @@
 {
-	"$schema": "https://raw.githubusercontent.com/xen-42/outer-wilds-new-horizons/master/NewHorizons/schema.json",
+	"$schema": "https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/body_schema.json",
 	"starSystem": "xen.ScaleShowcase",
-	"name" : "Brittle Hollow Copy",
-	"Base" :
-	{
-		"sphereOfInfluence": 600,
+	"name": "Brittle Hollow Copy",
+	"Base": {
+		"soiOverride": 600,
 		"hasMapMarker": false
 	},
 	"Orbit": {
@@ -12,12 +11,19 @@
 		"semiMajorAxis": 10500,
 		"primaryBody": "The Sun"
 	},
-	"Props" : 
-	{
+	"Props": {
 		"details": [
-			{ "path" : "TimberHearth_Body/Atmosphere_BH" },
-			{ "path" : "TimberHearth_Body/AmbientLight_BH" },
-			{ "path" : "TimberHearth_Body/Sector_BH" }
+			{
+				"path": "TimberHearth_Body/Atmosphere_BH",
+				"keepLoaded": true
+			},
+			{
+				"path": "TimberHearth_Body/AmbientLight_BH",
+				"keepLoaded": true
+			},
+			{
+				"path": "TimberHearth_Body/Sector_BH"
+			}
 		]
 	}
 }

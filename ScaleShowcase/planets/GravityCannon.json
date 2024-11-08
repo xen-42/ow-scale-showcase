@@ -1,0 +1,179 @@
+{
+	"$schema": "https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/body_schema.json",
+	"starSystem": "xen.ScaleShowcase",
+	"name": "Gravity Cannon Copy",
+	"Base": {
+		"soiOverride": 600,
+		"hasMapMarker": false
+	},
+	"Orbit": {
+		"isStatic": true,
+		"semiMajorAxis": 16700,
+		"primaryBody": "The Sun"
+	},
+	"Props": {
+		"details": [
+			{
+				"path": "BrittleHollow_Body/Sector_BH/Sector_Crossroads/Interactables_Crossroads/VisibleFrom_BH/GravityCrystals/OtherComponentsGroup/Prefab_NOM_GravityCrystal",
+				"rotation": {
+					"x": 272.120148,
+					"y": 89.86483,
+					"z": 90.1352844
+				},
+				"position": {
+					"x": 0.0148172379,
+					"y": 6.914563,
+					"z": -27.6421242
+				}
+			},
+			{
+				"path": "BrittleHollow_Body/Sector_BH/Sector_Crossroads/Interactables_Crossroads/VisibleFrom_BH/GravityCrystals/OtherComponentsGroup/Prefab_NOM_GravityCrystal",
+				"rotation": {
+					"x": 337.8447,
+					"y": 89.99509,
+					"z": 90.0025
+				},
+				"position": {
+					"x": 6.01526546,
+					"y": 3.47764683,
+					"z": -27.64212
+				}
+			},
+			{
+				"path": "BrittleHollow_Body/Sector_BH/Sector_Crossroads/Interactables_Crossroads/VisibleFrom_BH/GravityCrystals/OtherComponentsGroup/Prefab_NOM_GravityCrystal",
+				"rotation": {
+					"x": 350.0115,
+					"y": 270.004364,
+					"z": 269.99765
+				},
+				"position": {
+					"x": -6.003648,
+					"y": 3.455142,
+					"z": -27.6421242
+				}
+			},
+			{
+				"path": "BrittleHollow_Body/Sector_BH/Sector_Crossroads/Interactables_Crossroads/VisibleFrom_BH/GravityCrystals/OtherComponentsGroup/Prefab_NOM_GravityCrystal",
+				"rotation": {
+					"x": 36.3703079,
+					"y": 270.004883,
+					"z": 270.002441
+				},
+				"position": {
+					"x": -6.00570965,
+					"y": -3.456091,
+					"z": -27.6421165
+				}
+			},
+			{
+				"path": "BrittleHollow_Body/Sector_BH/Sector_Crossroads/Interactables_Crossroads/VisibleFrom_BH/GravityCrystals/OtherComponentsGroup/Prefab_NOM_GravityCrystal",
+				"rotation": {
+					"x": 79.55132,
+					"y": 269.880737,
+					"z": 269.8787
+				},
+				"position": {
+					"x": 0.0102891922,
+					"y": -6.948562,
+					"z": -27.6494865
+				}
+			},
+			{
+				"path": "BrittleHollow_Body/Sector_BH/Sector_Crossroads/Interactables_Crossroads/VisibleFrom_BH/GravityCrystals/OtherComponentsGroup/Prefab_NOM_GravityCrystal",
+				"rotation": {
+					"x": 30.4250031,
+					"y": 89.99544,
+					"z": 89.9977341
+				},
+				"position": {
+					"x": 6.013445,
+					"y": -3.4552784,
+					"z": -27.6421165
+				}
+			},
+			{
+				"path": "BrittleHollow_Body/Sector_BH/Sector_Crossroads/Interactables_Crossroads/VisibleFrom_BH/GravityCrystals/OtherComponentsGroup/Prefab_NOM_GravityCrystal",
+				"rotation": {
+					"x": 89.4852753,
+					"y": 267.5521,
+					"z": 267.5521
+				},
+				"position": {
+					"x": 0.0559862852,
+					"y": -14.2612867,
+					"z": -27.6522942
+				}
+			},
+			{
+				"path": "BrittleHollow_Body/Sector_BH/Sector_Crossroads/Interactables_Crossroads/VisibleFrom_BH/GravityCrystals/OtherComponentsGroup/Prefab_NOM_GravityCrystal/CapsuleVolume_NOM_GravityCrystal",
+				"rotation": {
+					"x": 80.0172958,
+					"y": 269.7164,
+					"z": 269.712067
+				},
+				"position": {
+					"x": 0,
+					"y": 0,
+					"z": -27.6436024
+				},
+				"scale": 10
+			},
+			{
+				"path": "BrittleHollow_Body/Sector_BH/Sector_Crossroads/Interactables_Crossroads/VisibleFrom_BH/GravityCrystals/OtherComponentsGroup/Prefab_NOM_GravityCrystal",
+				"rotation": {
+					"x": 90,
+					"y": 0,
+					"z": 0
+				},
+				"position": {
+					"x": 0,
+					"y": -25,
+					"z": -27.5
+				}
+			}
+		],
+		"gravityCannons": [
+			{
+				"shuttleID": "ScaleSolarSystem",
+				"detailed": true,
+				"position": {
+					"x": 0,
+					"y": 0,
+					"z": -45.5
+				},
+				"rotation": {
+					"x": 90,
+					"y": 0,
+					"z": 0
+				},
+				"rename": "LatticeCageGravityCannon",
+				"controls": {
+					"position": {
+						"x": 0,
+						"y": -20,
+						"z": -27.5
+					},
+					"rotation": {
+						"x": 90,
+						"y": 0,
+						"z": 0
+					},
+					"rename": "Controls"
+				},
+				"computer": {
+					"position": {
+						"x": 2,
+						"y": -25,
+						"z": -27.5
+					},
+					"rotation": {
+						"x": 90,
+						"y": 0,
+						"z": 0
+					},
+					"rename": "Computer"
+				}
+			}
+		]
+	}
+}

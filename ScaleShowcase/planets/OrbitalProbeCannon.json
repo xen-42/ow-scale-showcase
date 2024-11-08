@@ -1,10 +1,9 @@
 {
-	"$schema": "https://raw.githubusercontent.com/xen-42/outer-wilds-new-horizons/master/NewHorizons/schema.json",
+	"$schema": "https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/body_schema.json",
 	"starSystem": "xen.ScaleShowcase",
-	"name" : "Orbital Probe Cannon Copy",
-	"Base" :
-	{
-		"sphereOfInfluence": 600,
+	"name": "Orbital Probe Cannon Copy",
+	"Base": {
+		"soiOverride": 600,
 		"hasMapMarker": false
 	},
 	"Orbit": {
@@ -12,19 +11,26 @@
 		"semiMajorAxis": 13950,
 		"primaryBody": "The Sun"
 	},
-	"Props" : 
-	{
+	"Props": {
 		"details": [
-			{ 
-				"path" : "OrbitalProbeCannon_Body/Sector_OrbitalProbeCannon"
+			{
+				"path": "OrbitalProbeCannon_Body/Sector_OrbitalProbeCannon"
 			},
-			{ 
-				"path" : "CannonBarrel_Body/Sector_CannonDebrisMid",
-				"position": {"x": 184, "y": 0, "z": 0}
+			{
+				"path": "CannonBarrel_Body/Sector_CannonDebrisMid",
+				"position": {
+					"x": 184,
+					"y": 0,
+					"z": 0
+				}
 			},
-			{ 
-				"path" : "CannonMuzzle_Body/Sector_CannonDebrisTip",
-				"position": {"x": 275, "y": 0, "z": 0}
+			{
+				"path": "CannonMuzzle_Body/Sector_CannonDebrisTip",
+				"position": {
+					"x": 275,
+					"y": 0,
+					"z": 0
+				}
 			}
 		]
 	}

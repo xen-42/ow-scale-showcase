@@ -1,15 +1,14 @@
 {
-	"$schema": "https://raw.githubusercontent.com/xen-42/outer-wilds-new-horizons/master/NewHorizons/schema.json",
+	"$schema": "https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/body_schema.json",
 	"starSystem": "xen.ScaleShowcase",
-	"name" : "Signal Jammer Copy",
-	"Base" :
-	{
-		"sphereOfInfluence": 600,
+	"name": "Signal Jammer Copy",
+	"Base": {
+		"soiOverride": 600,
 		"hasMapMarker": false
 	},
 	"Orbit": {
 		"isStatic": true,
-		"semiMajorAxis": 16100,
+		"semiMajorAxis": 16500,
 		"primaryBody": "The Sun"
 	}
 }

@@ -1,10 +1,9 @@
 {
-	"$schema": "https://raw.githubusercontent.com/xen-42/outer-wilds-new-horizons/master/NewHorizons/schema.json",
+	"$schema": "https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/body_schema.json",
 	"starSystem": "xen.ScaleShowcase",
-	"name" : "Dark Bramble Copy",
-	"Base" :
-	{
-		"sphereOfInfluence": 600,
+	"name": "Dark Bramble Copy",
+	"Base": {
+		"soiOverride": 600,
 		"hasMapMarker": false
 	},
 	"Orbit": {
@@ -12,12 +11,20 @@
 		"semiMajorAxis": 5500,
 		"primaryBody": "The Sun"
 	},
-	"Props" : 
-	{
+	"Props": {
 		"details": [
-			{ "path" : "DarkBramble_Body/Atmosphere_DB" },
-			{ "path" : "DarkBramble_Body/AmbientLight_DB_Exterior" },
-			{ "path" : "DarkBramble_Body/Sector_DB", "removeChildren" : ["Interactables_DB/EntranceWarp_ToHub"] }
+			{
+				"path": "DarkBramble_Body/Atmosphere_DB",
+				"keepLoaded": true
+			},
+			{
+				"path": "DarkBramble_Body/AmbientLight_DB_Exterior",
+				"keepLoaded": true
+			},
+			{
+				"path": "DarkBramble_Body/Sector_DB",
+				"removeChildren": [ "Interactables_DB/EntranceWarp_ToHub" ]
+			}
 		]
 	}
 }

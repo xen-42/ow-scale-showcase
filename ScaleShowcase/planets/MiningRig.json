@@ -1,0 +1,71 @@
+{
+	"$schema": "https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/body_schema.json",
+	"starSystem": "xen.ScaleShowcase",
+	"name": "Mining Rig Copy",
+	"Base": {
+		"soiOverride": 500,
+		"hasMapMarker": false
+	},
+	"Orbit": {
+		"isStatic": true,
+		"semiMajorAxis": 17337.5,
+		"primaryBody": "The Sun"
+	},
+	"Props": {
+		"details": [
+			{
+				"rename": "MiningRigRoot",
+				"rotation": {
+					"x": 0,
+					"y": 0,
+					"z": 0
+				},
+				"keepLoaded": true
+			},
+			{
+				"path": "MiningRig_Body/Structure_TH_HEA_MiningRig",
+				"rotation": {
+					"x": 0,
+					"y": 0,
+					"z": 0
+				},
+				"parentPath": "Sector/MiningRigRoot",
+				"isRelativeToParent": true,
+				"keepLoaded": true
+			},
+			{
+				"path": "MiningRig_Body/Nodes",
+				"position": {
+					"x": -0.0795,
+					"y": 0.2044,
+					"z": 1.27
+				},
+				"rotation": {
+					"x": 0,
+					"y": 0,
+					"z": 87.0444
+				},
+				"parentPath": "Sector/MiningRigRoot",
+				"isRelativeToParent": true,
+				"keepLoaded": true
+			},
+			{
+				"path": "MiningRig_Body/MiningRig_Lighting",
+				"position": {
+					"x": 0.0024,
+					"y": 1.7923,
+					"z": 3.4
+				},
+				"rotation": {
+					"x": 0,
+					"y": 0,
+					"z": 87.0444
+				},
+				"rename": "Lighting",
+				"parentPath": "Sector/MiningRigRoot",
+				"isRelativeToParent": true,
+				"keepLoaded": true
+			}
+		]
+	}
+}

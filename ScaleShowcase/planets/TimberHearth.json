@@ -1,10 +1,9 @@
 {
-	"$schema": "https://raw.githubusercontent.com/xen-42/outer-wilds-new-horizons/master/NewHorizons/schema.json",
+	"$schema": "https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/body_schema.json",
 	"starSystem": "xen.ScaleShowcase",
-	"name" : "Timber Hearth Copy",
-	"Base" :
-	{
-		"sphereOfInfluence": 600,
+	"name": "Timber Hearth Copy",
+	"Base": {
+		"soiOverride": 600,
 		"hasMapMarker": false
 	},
 	"Orbit": {
@@ -12,12 +11,19 @@
 		"semiMajorAxis": 11500,
 		"primaryBody": "The Sun"
 	},
-	"Props" : 
-	{
+	"Props": {
 		"details": [
-			{ "path" : "TimberHearth_Body/Atmosphere_TH" },
-			{ "path" : "TimberHearth_Body/AmbientLight_TH" },
-			{ "path" : "TimberHearth_Body/Sector_TH" }
+			{
+				"path": "TimberHearth_Body/Atmosphere_TH",
+				"keepLoaded": true
+			},
+			{
+				"path": "TimberHearth_Body/AmbientLight_TH",
+				"keepLoaded": true
+			},
+			{
+				"path": "TimberHearth_Body/Sector_TH"
+			}
 		]
 	}
 }

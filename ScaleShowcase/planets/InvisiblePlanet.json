@@ -1,10 +1,9 @@
 {
-	"$schema": "https://raw.githubusercontent.com/xen-42/outer-wilds-new-horizons/master/NewHorizons/schema.json",
+	"$schema": "https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/body_schema.json",
 	"starSystem": "xen.ScaleShowcase",
-	"name" : "Ringed Planet Copy",
-	"Base" :
-	{
-		"sphereOfInfluence": 600,
+	"name": "Ringed Planet Copy",
+	"Base": {
+		"soiOverride": 600,
 		"hasMapMarker": false
 	},
 	"Orbit": {
@@ -12,10 +11,29 @@
 		"semiMajorAxis": 7500,
 		"primaryBody": "The Sun"
 	},
-	"Props" : 
-	{
+	"Props": {
 		"details": [
-			{ "path" : "DreamWorld_Body/Sector_DreamWorld/Atmosphere_Dreamworld/Prefab_IP_VisiblePlanet", "rotation": {"x":0,"y":0,"z":240} }
+			{
+				"path": "DreamWorld_Body/Sector_DreamWorld/Atmosphere_Dreamworld/Prefab_IP_VisiblePlanet",
+				"keepLoaded": true,
+				"rotation": {
+					"x": 0,
+					"y": 0,
+					"z": 240
+				}
+			},
+			{
+				"path": "DreamWorld_Body/Sector_DreamWorld/Atmosphere_Dreamworld/Prefab_IP_VisiblePlanet/VisiblePlanet_Pivot/Rings_IP_VisiblePlanet",
+				"rename": "OtherSide",
+				"parentPath": "Sector/Prefab_IP_VisiblePlanet/VisiblePlanet_Pivot/Rings_IP_VisiblePlanet",
+				"isRelativeToParent": true,
+				"keepLoaded": true,
+				"rotation": {
+					"x": 180,
+					"y": 0,
+					"z": 0
+				}
+			}
 		]
 	}
 }

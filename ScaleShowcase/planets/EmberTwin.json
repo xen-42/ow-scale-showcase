@@ -1,10 +1,9 @@
 {
-	"$schema": "https://raw.githubusercontent.com/xen-42/outer-wilds-new-horizons/master/NewHorizons/schema.json",
+	"$schema": "https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/body_schema.json",
 	"starSystem": "xen.ScaleShowcase",
-	"name" : "Ember Twin Copy",
-	"Base" :
-	{
-		"sphereOfInfluence": 600,
+	"name": "Ember Twin Copy",
+	"Base": {
+		"soiOverride": 600,
 		"hasMapMarker": false
 	},
 	"Orbit": {
@@ -12,12 +11,19 @@
 		"semiMajorAxis": 13250,
 		"primaryBody": "The Sun"
 	},
-	"Props" : 
-	{
+	"Props": {
 		"details": [
-			{ "path" : "CaveTwin_Body/Atmosphere_CaveTwin" },
-			{ "path" : "CaveTwin_Body/AmbientLight_CaveTwin" },
-			{ "path" : "CaveTwin_Body/Sector_CaveTwin" }
+			{
+				"path": "CaveTwin_Body/Atmosphere_CaveTwin",
+				"keepLoaded": true
+			},
+			{
+				"path": "CaveTwin_Body/AmbientLight_CaveTwin",
+				"keepLoaded": true
+			},
+			{
+				"path": "CaveTwin_Body/Sector_CaveTwin"
+			}
 		]
 	}
 }

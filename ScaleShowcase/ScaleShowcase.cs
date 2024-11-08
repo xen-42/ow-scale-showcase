@@ -1,4 +1,7 @@
-﻿using OWML.Common;
+﻿using HarmonyLib;
+using NewHorizons.Handlers;
+using NewHorizons.Utility;
+using OWML.Common;
 using OWML.ModHelper;
 using System;
 using UnityEngine;
@@ -6,6 +9,7 @@ using UnityEngine.InputSystem;
 
 namespace ScaleShowcase
 {
+    [HarmonyPatch]
     public class ScaleShowcase : ModBehaviour
     {
         public static ScaleShowcase Instance;
@@ -20,19 +24,27 @@ namespace ScaleShowcase
 
         // Planets
         public static GameObject anglerfish;
+        public static GameObject anglerfishEggs;
         public static GameObject ashTwin;
         public static GameObject attlerock;
+        public static GameObject backerSatellite;
         public static GameObject brittleHollow;
         public static GameObject darkBramble;
         public static GameObject emberTwin;
         public static GameObject eye;
         public static GameObject giantsDeep;
+        public static GameObject gravityCannon;
         public static GameObject hollowsLantern;
+        public static GameObject iceShuttle;
+        public static GameObject interloper;
         public static GameObject ringedPlanet;
+        public static GameObject mapSatellite;
+        public static GameObject miningRig;
         public static GameObject nomaiProbe;
         public static GameObject orbitalProbeCannon;
         public static GameObject quantumMoon;
         public static GameObject signalJammer;
+        public static GameObject skyShutterSatellite;
         public static GameObject stranger;
         public static GameObject sun;
         public static GameObject sunStation;
@@ -42,14 +54,17 @@ namespace ScaleShowcase
         public static GameObject whiteHole;
         public static GameObject whiteHoleStation;
 
+        public static bool _ignore;
 
         private void Start()
         {
             Instance = this;
             Log($"{nameof(ScaleShowcase)} is installed");
 
+            new Harmony(ScaleSystemName).PatchAll();
+
             // Load NH stuff
-            NewHorizonsAPI = ModHelper.Interaction.GetModApi<INewHorizons>("xen.NewHorizons");
+            NewHorizonsAPI = ModHelper.Interaction.TryGetModApi<INewHorizons>("xen.NewHorizons");
             NewHorizonsAPI.LoadConfigs(this);
             NewHorizonsAPI.GetStarSystemLoadedEvent().AddListener(OnLoadStarSystem);
 
@@ -64,28 +79,31 @@ namespace ScaleShowcase
         {
             Log($"Loading into {loadScene}");
 
-            if(loadScene == OWScene.TitleScreen && !IsInitialized)
+            if (loadScene == OWScene.TitleScreen && !IsInitialized)
             {
                 Log("Going to grab the eye.");
+                _ignore = true;
                 LoadManager.LoadSceneAsync(OWScene.EyeOfTheUniverse, true, LoadManager.FadeType.ToBlack, 0.1f, true);
             }
 
-            if(loadScene == OWScene.EyeOfTheUniverse && !IsInitialized)
+            if (loadScene == OWScene.EyeOfTheUniverse && !IsInitialized)
             {
                 Log("Grabbing the eye");
                 IsInitialized = true;
+                EyeSceneHandler.OnSceneLoad();
                 EyePrefab = GameObject.Instantiate(GameObject.Find("EyeOfTheUniverse_Body"));
                 EyePrefab.SetActive(false);
                 DontDestroyOnLoad(EyePrefab);
                 LoadManager.LoadSceneAsync(OWScene.TitleScreen, true, LoadManager.FadeType.ToBlack, 0.1f, true);
             }
 
-            if(loadScene == OWScene.SolarSystem && NewHorizonsAPI.GetCurrentStarSystem() == ScaleSystemName)
+            if (loadScene == OWScene.SolarSystem && NewHorizonsAPI.GetCurrentStarSystem() == ScaleSystemName)
             {
                 Log("Entering the scale showcase system");
 
                 // Get the Stranger to work
-                var streamingGroup = GameObject.Find("RingWorld_Body/StreamingGroup_RW").GetComponent<StreamingGroup>();
+                var streamingGroup = SearchUtilities.Find("RingWorld_Body/StreamingGroup_RW").GetComponent<StreamingGroup>();
+                streamingGroup.Awake();
                 streamingGroup.LoadGeneralAssets();
                 streamingGroup.LoadRequiredAssets();
                 streamingGroup.LoadRequiredColliders();
@@ -100,7 +118,7 @@ namespace ScaleShowcase
 
             Log("Scale showcase system should be done loading");
 
-            ModHelper.Events.Unity.FireInNUpdates(OnNHComplete, 10); 
+            ModHelper.Events.Unity.FireInNUpdates(OnNHComplete, 10);
         }
 
         public static void OnNHComplete()
@@ -109,25 +127,33 @@ namespace ScaleShowcase
 
             // Now we get all the planets
             anglerfish = NewHorizonsAPI.GetPlanet("Anglerfish Copy");
+            anglerfishEggs = NewHorizonsAPI.GetPlanet("Anglerfish Eggs Copy");
             ashTwin = NewHorizonsAPI.GetPlanet("Ash Twin Copy");
             attlerock = NewHorizonsAPI.GetPlanet("Attlerock Copy");
+            backerSatellite = NewHorizonsAPI.GetPlanet("Backer Satellite Copy");
             brittleHollow = NewHorizonsAPI.GetPlanet("Brittle Hollow Copy");
             darkBramble = NewHorizonsAPI.GetPlanet("Dark Bramble Copy");
             emberTwin = NewHorizonsAPI.GetPlanet("Ember Twin Copy");
             eye = NewHorizonsAPI.GetPlanet("Eye Copy");
             giantsDeep = NewHorizonsAPI.GetPlanet("Giant's Deep Copy");
+            gravityCannon = NewHorizonsAPI.GetPlanet("Gravity Cannon Copy");
             hollowsLantern = NewHorizonsAPI.GetPlanet("Hollow's Lantern Copy");
+            iceShuttle = NewHorizonsAPI.GetPlanet("Ice Shuttle Copy");
+            interloper = NewHorizonsAPI.GetPlanet("Interloper Copy");
             ringedPlanet = NewHorizonsAPI.GetPlanet("Ringed Planet Copy");
+            mapSatellite = NewHorizonsAPI.GetPlanet("Map Satellite Copy");
+            miningRig = NewHorizonsAPI.GetPlanet("Mining Rig Copy");
             nomaiProbe = NewHorizonsAPI.GetPlanet("Nomai Probe Copy");
             orbitalProbeCannon = NewHorizonsAPI.GetPlanet("Orbital Probe Cannon Copy");
             quantumMoon = NewHorizonsAPI.GetPlanet("Quantum Moon Copy");
             signalJammer = NewHorizonsAPI.GetPlanet("Signal Jammer Copy");
+            skyShutterSatellite = NewHorizonsAPI.GetPlanet("Sky Shutter Satellite Copy");
             stranger = NewHorizonsAPI.GetPlanet("Stranger Copy");
             sun = NewHorizonsAPI.GetPlanet("The Sun");
             sunStation = NewHorizonsAPI.GetPlanet("Sun Station Copy");
             shuttle = NewHorizonsAPI.GetPlanet("Shuttle Copy");
             timberHearth = NewHorizonsAPI.GetPlanet("Timber Hearth Copy");
-            vessel = NewHorizonsAPI.GetPlanet("Vessel Copy");
+            vessel = NewHorizonsAPI.GetPlanet("Vessel");
             whiteHole = NewHorizonsAPI.GetPlanet("White Hole Copy");
             whiteHoleStation = NewHorizonsAPI.GetPlanet("White Hole Station Copy");
 
@@ -136,34 +162,63 @@ namespace ScaleShowcase
             eyeSector.transform.parent = eye.transform;
             eyeSector.transform.localPosition = Vector3.zero;
             eyeSector.SetActive(true);
+            eyeSector.transform.Find("Effects_EYE_Symbol_Surface").gameObject.SetActive(false);
+            foreach (var cull in eyeSector.GetComponentsInChildren<SectorCullGroup>(true)) GameObject.Destroy(cull);
 
-            var eyeSurface = GameObject.Instantiate(EyePrefab.transform.Find("Sector_EyeOfTheUniverse/SixthPlanet_Root/Proxy_SixthPlanet").gameObject);
-            eyeSurface.transform.parent = eye.transform;
-            eyeSurface.transform.localPosition = Vector3.zero;
-            eyeSurface.SetActive(true);
-            eyeSurface.transform.Find("Effects_EYE_Symbol").gameObject.SetActive(false);
+            var eyeLighting = GameObject.Instantiate(EyePrefab.transform.Find("Sector_EyeOfTheUniverse/SixthPlanet_Root/Lighting_SixthPlanet").gameObject);
+            eyeLighting.transform.parent = eye.transform;
+            eyeLighting.transform.localPosition = Vector3.zero;
+            eyeLighting.SetActive(true);
+            eyeLighting.transform.Find("Light_ChuteEntrance").gameObject.SetActive(false);
+            foreach (var light in eyeLighting.GetComponentsInChildren<HeatLightningController>(true)) light.gameObject.SetActive(false);
+
+            var eyeAmbient = GameObject.Instantiate(EyePrefab.transform.Find("Sector_EyeOfTheUniverse/AmbientLight_EYE").gameObject);
+            eyeAmbient.transform.parent = eye.transform;
+            eyeAmbient.transform.localPosition = Vector3.zero;
+            eyeAmbient.SetActive(true);
+
+            var qmAtmosphere = GameObject.Instantiate(EyePrefab.transform.Find("Sector_EyeOfTheUniverse/SixthPlanet_Root/QuantumMoonProxy_Pivot/QuantumMoonProxy_Root/MoonState_Root/AtmoSphere").gameObject);
+            qmAtmosphere.transform.parent = quantumMoon.transform;
+            qmAtmosphere.transform.localPosition = Vector3.zero;
+            qmAtmosphere.SetActive(true);
+
+            var qmAmbientLight = GameObject.Instantiate(EyePrefab.transform.Find("Sector_EyeOfTheUniverse/SixthPlanet_Root/QuantumMoonProxy_Pivot/QuantumMoonProxy_Root/MoonState_Root/AmbientLight_QM").gameObject);
+            qmAmbientLight.transform.parent = quantumMoon.transform;
+            qmAmbientLight.transform.localPosition = Vector3.zero;
+            qmAmbientLight.SetActive(true);
 
             var jammerGeo = GameObject.Instantiate(EyePrefab.transform.Find("Sector_EyeOfTheUniverse/SixthPlanet_Root/SignalJammer_Pivot/SignalJammer_Root").gameObject);
             jammerGeo.transform.parent = signalJammer.transform;
             jammerGeo.transform.localPosition = Vector3.zero;
             jammerGeo.SetActive(true);
 
+            stranger.transform.Find("Sector").GetComponent<SphereShape>().radius = 0;
             foreach (var cloakProxy in stranger.GetComponentsInChildren<CloakingFieldProxy>())
             {
                 cloakProxy.OnPlayerEnterCloakingField();
             }
 
             // Ringed planet 
-            foreach (var renderer in ringedPlanet.transform.Find("Sector/Prefab_IP_VisiblePlanet(Clone)/VisiblePlanet_Pivot").GetComponentsInChildren<MeshRenderer>())
+            foreach (var renderer in ringedPlanet.transform.Find("Sector/Prefab_IP_VisiblePlanet/VisiblePlanet_Pivot/Rings_IP_VisiblePlanet").GetComponentsInChildren<MeshRenderer>())
             {
                 renderer.enabled = true;
             }
+            GameObject.DestroyImmediate(ringedPlanet.transform.Find("Sector/Prefab_IP_VisiblePlanet/VisiblePlanet_Pivot/Rings_IP_VisiblePlanet/OtherSide").GetComponent<RotateTransform>());
+            ringedPlanet.transform.Find("Sector/Prefab_IP_VisiblePlanet/VisiblePlanet_Pivot/Rings_IP_VisiblePlanet/OtherSide").transform.localRotation = Quaternion.Euler(180, 0, 0);
+
+            var eggs = anglerfishEggs.transform.Find("Sector/quadSphere1");
+            var sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            sphere.transform.localScale = Vector3.one * 11;
+            sphere.transform.SetParent(anglerfishEggs.transform.Find("Sector"), false);
+            sphere.GetComponent<MeshRenderer>().sharedMaterial = eggs.GetComponent<MeshRenderer>().sharedMaterial;
+            eggs.gameObject.SetActive(false);
 
             // Try fixing freecam while we're at it
-            if(Instance.ModHelper.Interaction.ModExists("misternebula.FreeCam"))
+            if (Instance.ModHelper.Interaction.ModExists("misternebula.FreeCam"))
             {
                 Log("Freecam is installed");
-                Instance.ModHelper.Events.Unity.RunWhen(() => GameObject.Find("FREECAM") != null, () => {
+                Instance.ModHelper.Events.Unity.RunWhen(() => GameObject.Find("FREECAM") != null, () =>
+                {
                     var freecam = GameObject.Find("FREECAM");
                     freecam.transform.parent = Locator.GetPlayerTransform();
                     freeCamLight = freecam.AddComponent<Light>();
@@ -182,13 +237,13 @@ namespace ScaleShowcase
 
         void Update()
         {
-            if(freeCamLight != null && Keyboard.current[Key.F].wasPressedThisFrame)
+            if (freeCamLight != null && Keyboard.current[Key.F].wasPressedThisFrame)
             {
                 freeCamLight.enabled = !freeCamLight.enabled;
             }
 
             // Fix some rotations but CR doesn't want us to
-            if(darkBramble.transform.rotation != Quaternion.identity)
+            if (darkBramble != null && darkBramble.transform.rotation != Quaternion.identity)
             {
                 darkBramble.transform.rotation = Quaternion.identity;
                 vessel.transform.rotation = Quaternion.identity;
@@ -201,6 +256,17 @@ namespace ScaleShowcase
                 shuttle.transform.rotation = Quaternion.identity;
                 signalJammer.transform.rotation = Quaternion.Euler(0, 45, 0);
             }
+        }
+
+
+        [HarmonyPatch(typeof(NewHorizons.Main), "OnSceneLoaded")]
+        [HarmonyPrefix]
+        public static bool IgnorePatch()
+        {
+            Log("Ignoring NH scene load because we moved to eye to grab prefabs");
+            var ignore = _ignore;
+            _ignore = false;
+            return !ignore;
         }
     }
 }
